@@ -157,7 +157,7 @@ class AuthServiceProxy(object):
         for rpc_call in rpc_calls:
             AuthServiceProxy.__id_count += 1
             m = rpc_call.pop(0)
-            batch_data.append({"jsonrpc":"2.0", "method":m, "params":rpc_call, "id":AuthServiceProxy.__id_count})
+            batch_data.append({"version":"1.1", "method":m, "params":rpc_call, "id":AuthServiceProxy.__id_count})
 
         postdata = json.dumps(batch_data, default=EncodeDecimal)
         log.debug("--> "+postdata)
